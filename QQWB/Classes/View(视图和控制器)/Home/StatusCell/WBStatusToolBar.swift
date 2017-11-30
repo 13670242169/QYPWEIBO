@@ -26,7 +26,6 @@ class WBStatusToolBar: UIView {
     @IBOutlet weak var commentButton: UIButton!
     //点赞
     @IBOutlet weak var likeButton: UIButton!
-
     override var description: String{
         return yy_modelDescription()
     }

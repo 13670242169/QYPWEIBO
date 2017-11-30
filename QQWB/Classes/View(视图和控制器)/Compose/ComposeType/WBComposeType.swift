@@ -57,7 +57,7 @@ class WBComposeType: UIView {
     @objc func clickMore(){
         print("点击更多")
         let offset = CGPoint(x: scrollview.bounds.width, y: 0)
-        scrollview.setContentOffset(offset, animated: true
+        scrollview.setContentOffset(offset, animated: true)
         // 2> 处理两个按钮封开
         returnButton.isHidden = false
         closeButtonCenterXCons.constant += 50

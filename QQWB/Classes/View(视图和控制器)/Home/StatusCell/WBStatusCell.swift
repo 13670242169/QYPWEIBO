@@ -12,7 +12,6 @@
 import UIKit
 
 class WBStatusCell: UITableViewCell {
-    
     var viewModel:WBStatusViewModel?{
         didSet{
             statusLabel.text = viewModel?.status.text
@@ -23,23 +22,18 @@ class WBStatusCell: UITableViewCell {
             iconView.cz_setImage(urlString: viewModel?.status.user?.profile_image_url, placehoderImage: UIImage(named:"avatar_default_big"),isAvatar: true)
             //底部工具栏
             toolBar.viewModel = viewModel
-            
             /// 配图视图模型
             pictureView.viewModel = viewModel
             /// 配图视图(移动到配图视图里面去了)
 //            pictureView.heightCons.constant = viewModel?.pictureViewSize.height ?? 0
-            
             // 微博文本
             statusLabel.attributedText = viewModel?.statusAttrText
-            
             /// 设置被转发微博的文字
             retweetedLabel?.attributedText = viewModel?.retweetedAttrText
-            
             ///设置来源
             sourceLabel.text = viewModel?.sourceStr
         }
     }
-    
     /// 头像
     @IBOutlet weak var iconView: UIImageView!
     /// 姓名
@@ -62,22 +56,17 @@ class WBStatusCell: UITableViewCell {
     @IBOutlet weak var retweetedLabel: UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         // 离屏渲染 -- 异步绘制
         self.layer.drawsAsynchronously = true
         // 栅格化 -- 异步绘制之后，会生成一张独立的图像，cell在屏幕上滚动的时候，本质上滚动的是一张图片
         // cell 优化，要尽量减少图层的数量，相当于就是只有一层
         // 停止滚动之后，可以接受监听
         self.layer.shouldRasterize = true
-        
         // 使用 “”栅格化，必须注意指定分辨率
         self.layer.rasterizationScale = UIScreen.main.scale
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }
