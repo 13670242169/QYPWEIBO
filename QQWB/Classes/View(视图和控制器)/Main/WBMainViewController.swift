@@ -20,21 +20,17 @@ class WBMainViewController: UITabBarController {
         setupTime()
         setupAnimat()
         setupNewFeatureViews()
-
         //设置背景颜色撰写按钮
         composeButton.setImage(UIImage(named:"tabbar_compose_icon_add"), for: .normal)
         composeButton.setBackgroundImage(UIImage(named:"tabbar_compose_button"), for: .normal)
-
         //设置代理
         delegate = self
-
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: WBUserShouldLoginNotification), object: nil)
     }
     deinit {
         //销毁时针
          timer?.invalidate()
-
         //注销通知
         NotificationCenter.default.removeObserver(self)
     }
@@ -45,7 +41,6 @@ class WBMainViewController: UITabBarController {
         return .portrait
     }
     @objc func userLogin(n:NSNotification){
-
         var when = DispatchTime.now()
         if n.object != nil{
             SVProgressHUD.setDefaultMaskType(.black)
@@ -58,30 +53,23 @@ class WBMainViewController: UITabBarController {
             let nav = UINavigationController(rootViewController: vc)
             self.present(nav, animated: true, completion: nil)
         }
-
-
     }
     /// 撰写微博
     @objc func composeStatus(){
         // FIXME 0>判断是否登录
-        
         // 2> 实例化视图
         let v = WBComposeType.composeView()
-        
         // 2> 显示视图 !!!!! 注意闭包的循环引用
         v.show { [weak v](clsName) in
             print(clsName)
             // 展现撰写微博控制器
-           
             guard let clsname = clsName ,
             let cls = NSClassFromString(Bundle.main.nameSpace + "." + clsname) as? UIViewController.Type else{
                 v?.removeFromSuperview()
                 return
             }
             let vc = cls.init()
-            
             let nav = UINavigationController(rootViewController: vc)
-            
             self.present(nav, animated: true){
                 v?.removeFromSuperview()
             }

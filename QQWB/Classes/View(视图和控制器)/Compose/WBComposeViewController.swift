@@ -9,20 +9,16 @@
 import UIKit
 import SVProgressHUD
 class WBComposeViewController: UIViewController {
-
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var toolbar: UIToolbar!
     /// 标题标签-换行的热键,option + 回车
     /// 每行设置选中文本,并且设置属性
     /// 如果要想挑战行间距,可以增加一个空行,设置空行的字体,lineHeight
-  
     @IBOutlet var titleLabel: UILabel!
     /// 工具栏底部约束
     @IBOutlet weak var toolbarBottom: NSLayoutConstraint!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         /// 监听键盘通知
         NotificationCenter.default.addObserver(self,
@@ -37,15 +33,11 @@ class WBComposeViewController: UIViewController {
          let duration = (n.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else{
             return
         }
-        
-        
         /// 2.设置底部约束
-         let offset = view.bounds.height  - rect.origin.y
-
+        let offset = view.bounds.height  - rect.origin.y
         print(offset)
         /// 3. 更新底部约束
         toolbarBottom.constant = offset
-    
         // 4.动画更新约束
         UIView.animate(withDuration: duration) {
             self.view.layoutSubviews()
@@ -62,22 +54,17 @@ class WBComposeViewController: UIViewController {
     @objc fileprivate func close(){
         dismiss(animated: true, completion: nil)
     }
-    
     lazy var sendButton:UIButton = {
         let btn = UIButton()
-
         btn.setTitle("发布", for: [])
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.setTitleColor(UIColor.white, for: [])
         btn.setTitleColor(UIColor.gray, for: .disabled)
-
         btn.setBackgroundImage(UIImage(named:"tabbar_compose_button"), for: [])
         btn.setBackgroundImage(UIImage(named:"tabbar_compose_button_highlighted"), for: .highlighted)
         btn.setBackgroundImage(UIImage(named:"common_button_white_disable"), for: .disabled)
-
         btn.addTarget(self, action: #selector(postStatus), for: .touchUpInside)
         btn.frame = CGRect(x: 0, y: 0, width: 65, height: 35)
-
         return btn
     }()
     @objc func postStatus(){
@@ -86,7 +73,6 @@ class WBComposeViewController: UIViewController {
         }
         // 纯文本微博
 //        let image:UIImage? = nil
-        
         // 有图片的微博
         let image = UIImage(named: "compose_toolbar_picture")
         // 发布微博
@@ -112,15 +98,12 @@ class WBComposeViewController: UIViewController {
         // 如果使用默认的键盘,输入视图位nil
         let keyboardView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 253))
         keyboardView.backgroundColor = UIColor.blue
-        
         // 2. 设置键盘视图
         textView.inputView = (textView.inputView == nil) ? keyboardView : nil
-        
         // 3.刷新键盘视图
         textView.reloadInputViews()
     }
 }
-
 // MARK: - 通知一堆多,代理一对一,,最后设置的代理对象有效...
 /// 苹果日常开发中,代理的监听方式最多的
 // 代理是发生事件时直接监听方法
@@ -135,17 +118,13 @@ extension WBComposeViewController:UITextViewDelegate{
 fileprivate extension WBComposeViewController{
     func setupUI(){
         view.backgroundColor = UIColor.white
-        
         setupNavigationBar()
         setuptoolbar()
     }
     func setupNavigationBar(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(close))
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
-        
         navigationItem.titleView = titleLabel
-        
         sendButton.isEnabled = false
     }
     func setuptoolbar(){
@@ -163,20 +142,15 @@ fileprivate extension WBComposeViewController{
             }
             let image = UIImage(named: imageName)
             let imageHL = UIImage(named: imageName + "_highlighted")
-            
             let btn = UIButton()
-            
             btn.setImage(image, for: [])
             btn.setImage(imageHL, for: .highlighted)
-            
             btn.sizeToFit()
             // 判断actionName
             if let actionName = s["actionName"] {
                 // 给按钮添加监听方法
                  btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
             }
-            
-            
             // 追加按钮
             items.append(UIBarButtonItem(customView: btn))
             // 追加弹簧
@@ -185,10 +159,5 @@ fileprivate extension WBComposeViewController{
         // 删除最后一个堂皇
         items.removeLast()
         toolbar.items = items
-        
-        
     }
-    
-    
-    
 }

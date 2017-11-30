@@ -9,10 +9,8 @@
 import UIKit
 
 class WBNavigationViewController: UINavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //隐藏默认的navigationbar
         navigationBar.isHidden = true
     }

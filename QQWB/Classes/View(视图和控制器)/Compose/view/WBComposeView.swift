@@ -10,7 +10,6 @@
 import UIKit
 
 class WBComposeView: UITextView {
-
     lazy var placeholderLabel = UILabel()
     override func awakeFromNib() {
         setupUI()
@@ -22,7 +21,6 @@ class WBComposeView: UITextView {
         // 如果有文本
         self.placeholderLabel.isHidden = self.hasText
     }
-
 }
 extension WBComposeView:UITextViewDelegate{
     // 测试代理后设置的有效,代理的原理是一对一,后设置的代理覆盖前面的代理
@@ -43,7 +41,6 @@ extension WBComposeView{
         placeholderLabel.frame.origin = CGPoint(x: 5, y: 8)
         placeholderLabel.sizeToFit()
         addSubview(placeholderLabel)
-        
         // MARK:- 测试代理
 //        self.delegate = self
     }

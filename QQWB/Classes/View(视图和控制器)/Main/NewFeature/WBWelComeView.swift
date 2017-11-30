@@ -44,34 +44,24 @@ class WBWelComeView: UIView {
         iconView.sd_setImage(with: url, placeholderImage: UIImage(named:"avatar_default"))
         
     }
-
-
-
-
     //自动布局系统跟新完成约束后会自动调用此方法
     //纯代码开发中对子视图进行修改
 //    override func awakeFromNib() {
 //
 //    }
-
     //视图被放到window上,表示被显示了,表示self这个view已经显示在视图上面,
     override func didMoveToWindow() {
         super.didMoveToWindow()
-
-
         //视图是使用自动布局设置的,只是设置了约束
         // - 当视图被添加到窗口上时,根据父视图的大小计算约束值,更新空间位置
         // - layoutIfNeeded会直接按照当前的约束直接更新控件位置
         // - 执行之后,控件所在的位置,就是xib中布局的位置
 //        self.layoutIfNeeded()
-
         self.bottonCons.constant = self.bounds.size.height - 200
-
         UIView.animate(withDuration: 4.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: [], animations: {
             //更新约束
             self.layoutIfNeeded()
         }) { (_) in
-
             UIView.animate(withDuration: 1.0, animations: { 
                 self.tipLabel.alpha = 1
             }, completion: { (_) in

@@ -13,7 +13,6 @@ import UIKit
 // 1.extension。中不能有属性
 // 2.extension.中不能重写父类 本类 的方法！重新父类的方法是子类的职责，，扩展是对类的扩展
 class WBBaseViewController: UIViewController {
-    
     //访客视图信息字典
     var visitorInfo:[String:String]?
     //用户登录标记
@@ -25,18 +24,15 @@ class WBBaseViewController: UIViewController {
     ///上拉刷新标记
     var isPullup = false
     lazy var navigationBar = UINavigationBar(frame:CGRect(x:0,y:20,width:UIScreen.main.bounds.size.width,height:44))
-    
     //自定义的导航条目 --以后设置导航栏内容统一使用navItem
     lazy var navItem = UINavigationItem()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         WBNetworkManager.shared.userLogon ? loadData() : ()
         //注册登录成功通知
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(rawValue: WBUserLoginSuccessNotification), object: nil)
         self.navigationController?.navigationBar.isTranslucent = false
-        
         // 遮住
         let v = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         v.backgroundColor = UIColor.red
@@ -57,23 +53,18 @@ class WBBaseViewController: UIViewController {
 }
 // MARK: - 监听访客视图的监听方法
 extension WBBaseViewController{
-
     /// 登录成功
     @objc fileprivate func loginSuccess(){
-
         print("登录成功")
-
         //登录前左边的注册按钮,右边的登录按钮
         navItem.leftBarButtonItem = nil
         navItem.rightBarButtonItem = nil
-
         //更新UI > 将访客视图替换为表格视图
         //需要重新设置view
         //在访问view 的get方法时 view == nil 会调用loadView方法时 -> viewDidload
         view = nil
         //注销通知 -> 重新执行viewDidLoad会再次注册,避免通知会重复注册
         NotificationCenter.default.removeObserver(self)
-
     }
     @objc func register(){
         print("用户注册")
@@ -91,32 +82,25 @@ extension WBBaseViewController{
         automaticallyAdjustsScrollViewInsets = false
         setupNavgationBar()
         WBNetworkManager.shared.userLogon ? setupTableView() : setupVisitorView()
-       
     }
      func setupTableView(){
         tableView = UITableView(frame:view.frame,style:.plain)
         view.insertSubview(tableView!, belowSubview: navigationBar)
-        
         //设置数据源和代理
         tableView?.delegate = self
         tableView?.dataSource = self
         //设置内容缩进
         tableView?.contentInset = UIEdgeInsetsMake(navigationBar.bounds.height , 0, tabBarController?.tabBar.bounds.height ?? 49, 0)
-
         //修改指示器的缩进
         tableView?.scrollIndicatorInsets = tableView!.contentInset
         //设置刷新控件
-
         ///1.实例化刷新控件
         refreshControl = QYPRefreshControl()
-        
         ///2.添加到表格视图
         tableView?.addSubview(refreshControl!)
-        
         ///3.添加监听方法
         refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
     }
-    
     // 设置访客视图
     private func setupVisitorView(){
         let visitor = WBVisitorView(frame:view.bounds)
@@ -134,7 +118,6 @@ extension WBBaseViewController{
         navigationBar.items = [navItem]
         //设置navBar的背景颜色
         navigationBar.barTintColor = UIColor.white
-        
         //设置文本的颜色
         navigationBar.tintColor = UIColor.red
         //设置标题颜色

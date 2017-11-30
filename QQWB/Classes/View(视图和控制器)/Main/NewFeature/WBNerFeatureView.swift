@@ -17,11 +17,8 @@ class WBNerFeatureView: UIView {
     }
     class func nerFeatureView() -> WBNerFeatureView{
         let nib = UINib(nibName: "WBNerFeatureView", bundle: nil)
-
         let v  = nib.instantiate(withOwner: nil, options: nil)[0] as! WBNerFeatureView
-
         v.frame = UIScreen.main.bounds
-
         return v
     }
 
@@ -53,12 +50,10 @@ extension WBNerFeatureView :UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //1.滚动到最后一屏,让视图删除
         let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-
         //2.判断是否最后一页
         if page == scrollView.subviews.count{
             removeFromSuperview()
         }
-
         //3.如果是倒数第二也,显示按钮
         enterButton.isHidden = (page != scrollView.subviews.count - 1)
     }
@@ -67,10 +62,8 @@ extension WBNerFeatureView :UIScrollViewDelegate{
         enterButton.isHidden = true
         //2.计算分页控件
         let page = Int(scrollView.contentOffset.x / scrollView.bounds.width + 0.5)
-        
         //3设置分页控件
         pageControl.currentPage = page
-        
         //4分页控件隐藏
         pageControl.isHidden = (page == scrollView.subviews.count)
     }
