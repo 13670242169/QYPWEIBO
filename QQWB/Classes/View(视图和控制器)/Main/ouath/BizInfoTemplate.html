@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+      <meta charset="utf-8" http-equiv="content-type" content="text/html">
+      <script src="template.js"></script>
+      <link rel="stylesheet" href="bizinfo.css" type="text/css"/>
+</head>
+
+<!-- ------------------------- 模板区域 开始-------------------------------- -->
+<script type="text/html" id="bizinfotmp">
+	<div id="bizinfo" class="container">
+      	<h4>业务信息</h4>
+            <table style="width:100%">
+            	<tbody>
+                  	<tr>
+                        	<td class="itemname">业务名称：</td>
+                              <td class="itemvalue"><%=bizKeyInfo.bizName%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">创建日期：</td>
+                              <td class="itemvalue"><%=bizKeyInfo.createtime%></td>
+                        </tr>
+                        <tr>
+                        	<td class="itemname">金融专员：</td>
+                              <td class="itemvalue"><%=bizKeyInfo.dealerOperator%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">联系电话：</td>
+                              <td class="itemvalue"><%=bizKeyInfo.dealerOperatorTel%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">业务状态：</td>
+                              <td class="itemvalue"><%=bizKeyInfo.statuName%></td>
+                        </tr>
+                  </tbody>
+            </table>
+      </div>
+      <div id="lesseeinfo" class="container">
+      	<h4>承租人信息</h4>
+            <!-- 法人承租人的div -->
+            <div id="div_ltd" style="width:100%">
+            </div>
+            <!-- 自然人承租人的div -->
+            <div id="div_psn" style="width:100%">
+            	<table style="width:100%">
+                        <tbody>
+                              <tr>
+                                    <td class="itemname">姓名：</td>
+                                    <td class="itemvalue"><%=lesseePsn.fullName%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">性别：</td>
+                                    <td class="itemvalue"><%=lesseePsn.sex%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">证件号：</td>
+                                    <td class="itemvalue"><%=lesseePsn.identifyNo%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">联系电话：</td>
+                                    <td class="itemvalue"><%=lesseePsn.mobile%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">婚姻状况：</td>
+                                    <td class="itemvalue"><%=lesseePsn.marryStatus%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">地址：</td>
+                                    <td class="itemvalue"><%=lesseePsn.address4%></td>
+                              </tr>
+                        </tbody>
+                  </table>
+            </div>
+      </div>
+      <div id="dealerinfo" class="container">
+      	<h4>经销商信息</h4>
+		<table style="width:100%">
+                        <tbody>
+                              <tr>
+                                    <td class="itemname">经销商：</td>
+                                    <td class="itemvalue"><%=dealer.fullName%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">机构代码：</td>
+                                    <td class="itemvalue"><%=dealer.orgCode%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">代号：</td>
+                                    <td class="itemvalue"><%=dealer.shortName%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">法人代表：</td>
+                                    <td class="itemvalue"><%=dealer.bossName%></td>
+                              </tr>
+					<tr>
+                                    <td class="itemname">联系电话：</td>
+                                    <td class="itemvalue"><%=dealer.bossTel%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">地址：</td>
+                                    <td class="itemvalue"><%=dealer.address4%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">备注：</td>
+                                    <td class="itemvalue"><%=dealer.remark%></td>
+                              </tr>
+                        </tbody>
+                  </table>
+      </div>
+      <div id="factoryinfo" class="container">
+      	<h4>厂商信息</h4>
+		<table style="width:100%">
+                        <tbody>
+                              <tr>
+                                    <td class="itemname">厂商名称：</td>
+                                    <td class="itemvalue"><%=factory.fullName%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">机构代码：</td>
+                                    <td class="itemvalue"><%=factory.orgCode%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">代号：</td>
+                                    <td class="itemvalue"><%=factory.shortName%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">地址：</td>
+                                    <td class="itemvalue"><%=factory.address4%></td>
+                              </tr>
+					<tr>
+                                    <td class="itemname">品牌：</td>
+                                    <td class="itemvalue"><%=factory.brand%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">法人代表：</td>
+                                    <td class="itemvalue"><%=factory.bossName%></td>
+                              </tr>
+                              <tr>
+                                    <td class="itemname">联系电话：</td>
+                                    <td class="itemvalue"><%=factory.bossTel%></td>
+                              </tr>
+                        </tbody>
+                  </table>
+      </div>
+      <div id="leaseinfo" class="container">
+      	<h4>租赁物信息</h4>
+		<table style="width:100%">
+			<thead>
+				<th class="device_tb_head">设备类型</th>
+				<th class="device_tb_head">品牌</th>
+				<th class="device_tb_head">名称</th>
+				<th class="device_tb_head">型号</th>
+				<th class="device_tb_head">价格</th>
+			</thead>
+			<tbody>
+				  <% for(i=0;i<asstItemList.length;++i) {%>
+                      <tr>
+                          <td class="device_tb_body"><%=asstItemList[i].codeEquipmentType%></td>
+                          <td class="device_tb_body"><%=asstItemList[i].brand%></td>
+                          <td class="device_tb_body"><%=asstItemList[i].name%></td>
+                          <td class="device_tb_body"><%=asstItemList[i].codeEquipmentModel%></td>
+                          <td class="device_tb_body"><%=asstItemList[i].buyPrice%></td>
+                      </tr>
+				  <%}%>
+			</tbody>
+		</table>
+      </div>
+      <div id="schemeinfo" class="container">
+      	<h4>方案信息</h4>
+		<table style="width:100%">
+            	<tbody>
+                  	<tr>
+                        	<td class="itemname">采购价格：</td>
+                              <td class="itemvalue"><%=bizScheme.buyPrice%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">首付：</td>
+                              <td class="itemvalue"><%=bizScheme.payFirst%></td>
+                        </tr>
+                        <tr>
+                        	<td class="itemname">融资额：</td>
+                              <td class="itemvalue"><%=bizScheme.principal%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">保证金：</td>
+                              <td class="itemvalue"><%=bizScheme.deposit%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">手续费：</td>
+                              <td class="itemvalue"><%=bizScheme.handleFee%></td>
+                        </tr>
+				<tr>
+                        	<td class="itemname">月还款：</td>
+                              <td class="itemvalue"><%=bizScheme.monthRepayment%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">方案类型：</td>
+                              <td class="itemvalue"><%=bizScheme.schemeType%></td>
+                        </tr>
+                        <tr>
+                        	<td class="itemname">利率：</td>
+                              <td class="itemvalue"><%=bizScheme.rateVal%></td>
+                        </tr>
+                        <tr>
+                              <td class="itemname">期数：</td>
+                              <td class="itemvalue"><%=bizScheme.periodNo%></td>
+                        </tr>
+                  </tbody>
+            </table>
+      </div>
+</script>
+<!-- ------------------------- 模板区域 结束-------------------------------- -->
+<body>
+	<div id="bizinfo_container"></div>
+
+    <script>
+        var data = JSON.parse(window.java.getJSON());
+
+        var html = template('bizinfotmp', data);
+
+        document.getElementById('bizinfo_container').innerHTML = html;
+        if (data.lesseePsn.id == null){
+            var target = document.getElementById("div_psn");
+            target.style.display="none";
+
+            var target = document.getElementById("div_ltd");
+            target.style.display="block";
+        } else {
+          var target = document.getElementById("div_psn");
+            target.style.display="block";
+
+            var target = document.getElementById("div_ltd");
+            target.style.display="none";
+        }
+    </script>
+</body>
+</html>

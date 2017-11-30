@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0px;
+	padding:0px	
+}
+div.container{
+	width:100%;
+	background:#9FF;
+	margin:0 auto;
+	margin-bottom:3px
+}
+
+h4{
+	color:#000;	
+	background:#3CF;
+	width:100%-3xp;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:3px; 
+	margin-bottom:0px; 
+	margin-top:0px
+}
+
+td.itemname{
+	font-size:smaller;
+	background:#CCF;
+	font-weight:bold
+}
+
+td.itemvalue{
+	font-size:smaller;
+	width:70%;
+	background:#CCF;
+}
+
+th.device_tb_head{
+	background:#555;	
+	font-size:smaller;
+	color:#FFF
+}
+
+td.device_tb_body{
+	font-size:smaller;
+	width:20%;
+	background:#CCF;
+}

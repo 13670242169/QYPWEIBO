@@ -1,0 +1,44 @@
+
+[
+ {
+ "clsName" : "WBHomeViewController",
+ "title" : "首页",
+ 
+ "visitorInfo" : {
+ "imageName" : "",
+ "message" : "我是一个小小小小小小鸟"
+ },
+ "imageName" : "home"
+ },
+ {
+ "clsName" : "WBMessageViewController",
+ "title" : "消息",
+ "visitorInfo" : {
+ "imageName" : "visitordiscover_image_message",
+ "message" : "我要飞得更加的高"
+ },
+ "imageName" : "message_center"
+ },
+ {
+ "clsName" : "UIViewController"
+ },
+ {
+ "clsName" : "WBDiscoverViewController",
+ "title" : "发现",
+ "visitorInfo" : {
+ "imageName" : "visitordiscover_image_message",
+ "message" : "你是傻逼吗"
+ },
+ "imageName" : "discover"
+ },
+ {
+ "clsName" : "WBProfileViewController",
+ "title" : "我",
+ "visitorInfo" : {
+ "imageName" : "visitordiscover_image_profile",
+ "message" : "我在开心的开发学习"
+ },
+ "imageName" : "profile"
+ }
+ ]
+
